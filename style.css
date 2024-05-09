@@ -1,153 +1,177 @@
-.body {
+/* Reset default styles */
+* {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f1f1f1;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+/* Global styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* Container styles */
 .app {
-    max-width: 100%;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100vh;
 }
 
 .screen {
     display: none;
-    padding: 20px;
-    background-color: #f1f1f1;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
     overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 .active {
     display: block;
 }
 
+/* Join screen styles */
 .join-screen {
-    background-color: #f9f9f9;
+    padding: 40px;
 }
 
+.join-screen h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.join-screen label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.join-screen input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.join-screen button {
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.join-screen button:hover {
+    background-color: #0056b3;
+}
+
+/* Chat screen styles */
 .chat-screen {
     position: relative;
     height: 70vh;
-    width: 95%; /* Adjusted width */
-    max-width: 700px; /* Adjusted max-width */
-    overflow: hidden; /* Remove scrollbar */
-    background-color: #fff;
     padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Added for scrollbar */
 }
 
-.header {
+.chat-screen .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    border-bottom: 1px solid #ccc;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 0 auto; /* Centering the logo */
-}
-
-.message {
-    margin-bottom: 10px;
-}
-
-.my-message {
-    text-align: right;
-}
-
-.other-message {
-    text-align: left;
-}
-
-.name {
-    font-weight: bold;
-}
-
-.typebox {
-    position: absolute;
-    bottom: 20px; /* Adjusted bottom position */
-    left: 20px; /* Adjusted left position */
-    right: 20px; /* Adjusted right position */
-    display: flex;
-    align-items: center;
-}
-
-#message-input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    background-color: #fff; /* Changed background color */
-    margin-right: 10px;
-}
-
-#send-message {
-    padding: 10px;
     background-color: #007bff;
     color: #fff;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    margin-right: 20px; /* Increased margin */
 }
 
-#exit-chat {
+.chat-screen .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.chat-screen #exit-chat {
+    padding: 10px 20px;
     background-color: #dc3545;
     color: #fff;
     border: none;
     border-radius: 5px;
-    padding: 10px 20px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.form {
-    max-width: 300px;
-    margin: 0 auto;
-    text-align: center;
+.chat-screen #exit-chat:hover {
+    background-color: #bd2130;
 }
 
-.form h2 {
-    margin-bottom: 20px;
+.message {
+    margin-bottom: 10px;
+    clear: both;
+    overflow: hidden;
 }
 
-.form-input {
-    margin-bottom: 20px;
+.my-message,
+.other-message {
+    max-width: 70%; /* Limiting width for messages */
+    padding: 10px;
+    border-radius: 10px;
+    word-wrap: break-word; /* Allowing long words to wrap */
 }
 
-.form-input label {
-    display: block;
+.my-message {
+    background-color: #dcf8c6; /* Light green for your messages */
+    float: right; /* Float messages to the right */
+    clear: right;
+}
+
+.other-message {
+    background-color: #e4e4e4; /* Light gray for other's messages */
+    float: left; /* Float messages to the left */
+    clear: left;
+}
+
+.name {
+    font-weight: bold;
     margin-bottom: 5px;
 }
 
-.form-input input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.typebox {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
 }
 
-#join-user {
-    padding: 10px 20px;
+.typebox input[type="text"] {
+    width: calc(100% - 120px);
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    background-color: #f0f0f0;
+}
+
+.typebox button {
+    width: 100px;
+    padding: 15px;
     background-color: #007bff;
     color: #fff;
+    font-size: 18px;
     border: none;
-    border-radius: 5px;
+    border-radius: 30px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.updtae {
-    color: #28a745;
-    padding: 5px 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    text-align: center; /* Center align the update message */
+.typebox button:hover {
+    background-color: #0056b3;
 }
